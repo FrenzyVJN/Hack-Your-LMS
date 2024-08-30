@@ -1,7 +1,23 @@
-<nav class="bg-gray-800 text-white p-4">
-  <ul class="flex justify-center space-x-6">
-    <li><a href="/idor" class="hover:text-gray-400">IDOR</a></li>
-    <li><a href="https://ddos-attack.vercel.app/" class="hover:text-gray-400">DDoS</a></li>
-    <li><a href="/sql" class="hover:text-gray-400">SQL Injection</a></li>
-  </ul>
-</nav>
+<main class="bg-gray-800 text-white flex flex-col items-center justify-center min-h-screen">
+	<p class="text-3xl mb-8">CyberSecurity Teacher</p>
+	<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+		<a
+			href="/idor"
+			class="block bg-gray-700 hover:bg-gray-600 text-center p-8 rounded-lg shadow-md transition duration-300"
+		>
+			<span class="text-xl">IDOR</span>
+		</a>
+		<a
+			href="https://ddos-attack.vercel.app/"
+			class="block bg-gray-700 hover:bg-gray-600 text-center p-8 rounded-lg shadow-md transition duration-300"
+		>
+			<span class="text-xl">DDoS</span>
+		</a>
+		<a
+			href="/sql"
+			class="block bg-gray-700 hover:bg-gray-600 text-center p-8 rounded-lg shadow-md transition duration-300"
+		>
+			<span class="text-xl">SQL Injection</span>
+		</a>
+	</div>
+</main>
