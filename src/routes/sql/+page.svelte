@@ -29,7 +29,7 @@
 			currentView = 'main';
 		} else if (
 			username === "admin' OR '1'='1" ||
-			(username === "admin' OR 1=1;-" && password != '')
+			(username === "admin' OR 1=1;--" && password != '')
 		) {
 			loginMessage = 'Login successful! (SQL Injection case)';
 			currentView = 'main';
