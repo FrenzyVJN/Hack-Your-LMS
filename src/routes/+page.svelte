@@ -1,5 +1,5 @@
 <main class="bg-gray-800 text-white flex flex-col items-center justify-center min-h-screen">
-	<p class="text-3xl mb-8">CyberSecurity Teacher</p>
+	<p class="text-3xl mb-8">Hack your LMS</p>
 	<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 		<a
 			href="/idor"
