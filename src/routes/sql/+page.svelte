@@ -5,12 +5,6 @@
 	let username = '';
 	let password = '';
 	let loginMessage = '';
-	let id = '001';
-	let tab = 'home';
-	let content = '';
-	let isAdmin = false;
-	let selectedUserId = '';
-	let newRole = '';
 
 	// Simulated database for login
 	const usersDb = {
@@ -37,6 +31,21 @@
 			loginMessage = 'Invalid credentials!';
 		}
 	}
+	
+	let id = '001';
+	let tab = 'home';
+	let content = '';
+	let isAdmin = false;
+	let selectedUserId = '';
+	// Sample data for users
+	const userData = {
+		'001': { name: 'Alice', email: 'alice@example.com', role: 'Student' },
+		'002': { name: 'Bob', email: 'bob@example.com', role: 'Teacher' },
+		'003': { name: 'Charlie', email: 'charlie@example.com', role: 'Student' },
+		'004': { name: 'Diana', email: 'diana@example.com', role: 'Admin' },
+		'005': { name: 'Edward', email: 'edward@example.com', role: 'Student' }
+	};
+
 	function handleButtonClick(buttonId) {
 		if (tab === buttonId) {
 			return;
@@ -82,13 +91,12 @@
 		id = event.target.value;
 		updateContent();
 	}
-
+	let newRole = '';
 	function handleRoleSelect(event) {
 		newRole = event.target.value;
 		updateContent();
 		console.log(`Role for user ${id} changed to ${newRole}`);
 	}
-
 	function confirmRoleChange() {
 		userData[id].role = newRole;
 		if (selectedUserId === id) {
@@ -144,7 +152,9 @@
 			</div>
 		</div>
 	{:else}
-		<div class="bg-gray-100 border-b border-gray-300 p-4 flex items-center justify-between">
+
+	<main class="border bg-white">
+		<div class="bg-gray-200 border-b border-gray-300 p-4 flex items-center justify-between">
 			<div class="flex space-x-2">
 				<div class="w-3 h-3 rounded-full bg-red-500 cursor-pointer"></div>
 				<div class="w-3 h-3 rounded-full bg-yellow-500 cursor-pointer"></div>
@@ -154,95 +164,113 @@
 				id="url"
 				type="text"
 				value="lms.snuchennai.edu.in/home"
-				class="border rounded-md p-2 w-full max-w-4xl mx-auto focus:outline-none focus:ring-2 focus:ring-blue-500"
+				class="border rounded-md p-2 w-full max-w-4xl mx-auto"
 				on:change={handleInputChange}
 				on:keydown={handleKeyPress}
 			/>
 		</div>
-
-		<div class="flex-1 overflow-auto">
-			<div class="border border-gray-300 p-4 flex flex-wrap space-x-4">
-				<button
-					id="home"
-					class="underline px-2 py-1 text-blue-600 hover:text-blue-800"
-					on:click={() => handleButtonClick('home')}>Home</button
-				>
-				<button
-					id="profile"
-					class="underline px-2 py-1 text-blue-600 hover:text-blue-800"
-					on:click={() => handleButtonClick('profile')}>Profile</button
-				>
-				<button
-					id="course"
-					class="underline px-2 py-1 text-blue-600 hover:text-blue-800"
-					on:click={() => handleButtonClick('course')}>Courses</button
-				>
-				<button
-					id="assignment"
-					class="underline px-2 py-1 text-blue-600 hover:text-blue-800"
-					on:click={() => handleButtonClick('assignment')}>Assignments</button
-				>
-				<button
-					id="grades"
-					class="underline px-2 py-1 text-blue-600 hover:text-blue-800"
-					on:click={() => handleButtonClick('grades')}>Grades</button
-				>
-				<button
-					id="resources"
-					class="underline px-2 py-1 text-blue-600 hover:text-blue-800"
-					on:click={() => handleButtonClick('resources')}>Resources</button
-				>
-				<button
-					id="settings"
-					class="underline px-2 py-1 text-blue-600 hover:text-blue-800"
-					on:click={() => handleButtonClick('settings')}>Settings</button
-				>
-				{#if isAdmin}
+	
+		<div class="bg-gray-100 border-b border-gray-300 p-6 flex items-center">
+			<a href="/">
+				<div class="w-6 h-4 flex flex-col justify-between cursor-pointer">
+					<span class="block h-0.5 bg-gray-800"></span>
+					<span class="block h-0.5 bg-gray-800"></span>
+					<span class="block h-0.5 bg-gray-800"></span>
+				</div>
+			</a>
+			<div class="flex px-5">snulms</div>
+		</div>
+	
+		<div class="flex overflow-auto">
+			<div class="p-4 w-64">
+				<div class="flex flex-col mb-auto">
 					<button
-						id="admin"
-						class="underline px-2 py-1 text-blue-600 hover:text-blue-800"
-						on:click={() => handleButtonClick('admin')}>Admin</button
+						id="home"
+						class="flex items-center px-4 py-2 border hover:bg-blue-500 hover:text-white"
+						on:click={() => handleButtonClick('home')}
 					>
-				{/if}
+						<span class="ml-2">Home</span>
+					</button>
+					<button
+						id="profile"
+						class="flex items-center px-4 py-2 border hover:bg-blue-500 hover:text-white"
+						on:click={() => handleButtonClick('profile')}
+					>
+						<span class="ml-2">Profile</span>
+					</button>
+					<button
+						id="course"
+						class="flex items-center px-4 py-2 border hover:bg-blue-500 hover:text-white"
+						on:click={() => handleButtonClick('course')}
+					>
+						<span class="ml-2">Courses</span>
+					</button>
+					<button
+						id="assignment"
+						class="flex items-center px-4 py-2 border hover:bg-blue-500 hover:text-white"
+						on:click={() => handleButtonClick('assignment')}
+					>
+						<span class="ml-2">Assignments</span>
+					</button>
+					<button
+						id="grades"
+						class="flex items-center px-4 py-2 border hover:bg-blue-500 hover:text-white"
+						on:click={() => handleButtonClick('grades')}
+					>
+						<span class="ml-2">Grades</span>
+					</button>
+					<button
+						id="resources"
+						class="flex items-center px-4 py-2 border hover:bg-blue-500 hover:text-white"
+						on:click={() => handleButtonClick('resources')}
+					>
+						<span class="ml-2">Resources</span>
+					</button>
+					<button
+						id="settings"
+						class="flex items-center px-4 py-2 border hover:bg-blue-500 hover:text-white"
+						on:click={() => handleButtonClick('settings')}
+					>
+						<span class="ml-2">Settings</span>
+					</button>
+					{#if isAdmin}
+						<button
+							id="admin"
+							class="flex items-center px-4 py-2 border hover:bg-blue-500 hover:text-white"
+							on:click={() => handleButtonClick('admin')}
+						>
+							<span class="ml-2">Admin</span>
+						</button>
+					{/if}
+				</div>
 			</div>
-			<div class="content border border-gray-300 p-4 bg-white rounded-lg mt-4">
+	
+			<div class="content pl-4 mb-6">
 				{@html content}
 			</div>
 			{#if tab === 'admin'}
-				<div class="content border border-gray-300 p-4 bg-white rounded-lg mt-4">
-					<h2 class="text-xl font-bold mb-4">Admin Controls</h2>
-					<label for="userSelect" class="block text-gray-700 font-medium mb-2">Select User:</label>
-					<select
-						id="userSelect"
-						on:change={handleUserSelect}
-						class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
-					>
+				<div class="content">
+					<h2>Admin Controls</h2>
+					<label for="userSelect">Select User:</label>
+					<select id="userSelect" on:change={handleUserSelect}>
 						<option value="">Select User</option>
 						{#each Object.keys(userData) as uid}
 							<option value={uid}>{userData[uid].name}</option>
 						{/each}
 					</select>
-
-					<label for="roleSelect" class="block text-gray-700 font-medium mb-2"
-						>Change Role to:</label
-					>
-					<select
-						id="roleSelect"
-						on:change={handleRoleSelect}
-						class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
-					>
+					<label for="roleSelect">Change Role to:</label>
+					<select id="roleSelect" on:change={handleRoleSelect}>
 						<option value="Student">Student</option>
 						<option value="Teacher">Teacher</option>
 						<option value="Admin">Admin</option>
 					</select>
-
-					<button
-						on:click={confirmRoleChange}
-						class="bg-green-500 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 transition duration-300"
-						>Confirm</button
-					>
+					<button on:click={confirmRoleChange}>Confirm</button>
 				</div>
 			{/if}
+	
+			<div></div>
 		</div>
+	</main>
+	
 	{/if}
 </main>
