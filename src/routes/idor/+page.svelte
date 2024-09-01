@@ -96,12 +96,15 @@
 			isAdmin = false;
 		}
 	}
+	function close(){
+		window.open('/', '_self');
+	}
 </script>
 
 <main class="border bg-white">
 	<div class="bg-gray-200 border-b border-gray-300 p-4 flex items-center justify-between">
 		<div class="flex space-x-2">
-			<div class="w-3 h-3 rounded-full bg-red-500 cursor-pointer"></div>
+			<div class="w-3 h-3 rounded-full bg-red-500 cursor-pointer" on:click={close}></div>
 			<div class="w-3 h-3 rounded-full bg-yellow-500 cursor-pointer"></div>
 			<div class="w-3 h-3 rounded-full bg-green-500 cursor-pointer"></div>
 		</div>

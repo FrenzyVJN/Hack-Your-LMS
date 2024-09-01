@@ -33,7 +33,7 @@
 	}
 	
 	let id = '001';
-	let tab = 'home';
+	let tab = 'login';
 	let content = '';
 	let isAdmin = false;
 	let selectedUserId = '';
@@ -117,11 +117,43 @@
 			isAdmin = false;
 		}
 	}
+	function close(){
+		window.open('/', '_self');
+	}
 </script>
 
 <main class="min-h-screen w-screen border border-black bg-white">
 	{#if currentView === 'login'}
-		<div class="flex items-center justify-center h-screen bg-gray-100">
+	<div class="bg-gray-100 min-h-screen">
+		<div class="bg-gray-200 border-b border-gray-300 p-4 flex items-center justify-between">
+			<div class="flex space-x-2">
+				<div class="w-3 h-3 rounded-full bg-red-500 cursor-pointer" on:click={close}></div>
+				<div class="w-3 h-3 rounded-full bg-yellow-500 cursor-pointer"></div>
+				<div class="w-3 h-3 rounded-full bg-green-500 cursor-pointer"></div>
+			</div>
+			<input
+				id="url"
+				type="text"
+				value="lms.snuchennai.edu.in/login"
+				class="border rounded-md p-2 w-full max-w-4xl mx-auto"
+				on:change={handleInputChange}
+				on:keydown={handleKeyPress}
+			/>
+		</div>
+	
+		<div class="bg-gray-100 border-b border-gray-300 p-6 flex items-center">
+			<div>
+				<div class="w-6 h-4 flex flex-col justify-between cursor-pointer">
+					<span class="block h-0.5 bg-gray-800"></span>
+					<span class="block h-0.5 bg-gray-800"></span>
+					<span class="block h-0.5 bg-gray-800"></span>
+				</div>
+			</div>
+			<div class="flex px-5">snulms</div>
+		</div>
+	
+
+		<div class="flex items-center justify-center mt-20 ">
 			<div class="bg-white p-8 rounded-lg shadow-md w-96">
 				<h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
 				<input
@@ -151,12 +183,13 @@
 				{/if}
 			</div>
 		</div>
+	</div>
 	{:else}
 
 	<main class="border bg-white">
 		<div class="bg-gray-200 border-b border-gray-300 p-4 flex items-center justify-between">
 			<div class="flex space-x-2">
-				<div class="w-3 h-3 rounded-full bg-red-500 cursor-pointer"></div>
+				<div class="w-3 h-3 rounded-full bg-red-500 cursor-pointer" on:click={close}></div>
 				<div class="w-3 h-3 rounded-full bg-yellow-500 cursor-pointer"></div>
 				<div class="w-3 h-3 rounded-full bg-green-500 cursor-pointer"></div>
 			</div>
