@@ -37,7 +37,8 @@
 
 	let id = '001';
 	let tab = 'login';
-	let content = '<b>Welcome to the Learning Management System (LMS) at Shiv Nadar University, Chennai !!</b><br><br> Based in a sprawling campus of 250 acres, Shiv Nadar University, Chennai is committed to academic excellence. Each program is designed to help talented students become a successful, job-ready professional or a world-class academic. The University promotes a culture of academic rigour, supported by ample resources, including one of the best-equipped libraries in Southern India, and extensive, world-class research facilities. The University strongly believes that its role is not limited to disseminating knowledge but to act as a catalyst for research, discovery and creation of new forms of expression and aims to become a world-class centre for research. Driven by a belief in the need for all-round development, students are provided ample sports facilities and rich campus life.';
+	let content =
+		'<b>Welcome to the Learning Management System (LMS) at Shiv Nadar University, Chennai !!</b><br><br> Based in a sprawling campus of 250 acres, Shiv Nadar University, Chennai is committed to academic excellence. Each program is designed to help talented students become a successful, job-ready professional or a world-class academic. The University promotes a culture of academic rigour, supported by ample resources, including one of the best-equipped libraries in Southern India, and extensive, world-class research facilities. The University strongly believes that its role is not limited to disseminating knowledge but to act as a catalyst for research, discovery and creation of new forms of expression and aims to become a world-class centre for research. Driven by a belief in the need for all-round development, students are provided ample sports facilities and rich campus life.';
 	let isAdmin = false;
 	let selectedUserId = '';
 
@@ -62,6 +63,44 @@
 		} else if (buttonId === 'home') {
 			tab = buttonId;
 			content = `<b>Welcome to the Learning Management System (LMS) at Shiv Nadar University, Chennai !!</b><br><br> Based in a sprawling campus of 250 acres, Shiv Nadar University, Chennai is committed to academic excellence. Each program is designed to help talented students become a successful, job-ready professional or a world-class academic. The University promotes a culture of academic rigour, supported by ample resources, including one of the best-equipped libraries in Southern India, and extensive, world-class research facilities. The University strongly believes that its role is not limited to disseminating knowledge but to act as a catalyst for research, discovery and creation of new forms of expression and aims to become a world-class centre for research. Driven by a belief in the need for all-round development, students are provided ample sports facilities and rich campus life.`;
+		} else if (buttonId === 'settings') {
+			tab = buttonId;
+			content = `<div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 max-w-5xl mx-auto">
+  <div class="bg-white p-4 border border-gray-200 rounded-lg shadow-sm">
+    <div class="font-semibold text-lg mb-2">User details</div>
+    <p class="mb-2">
+      <strong>Email address:</strong> 
+      <a href="mailto:saran23110050@snuchennai.edu.in" class="text-blue-600 hover:underline">
+        ${username.startsWith('admin') ? 'admin' : username}@snuchennai.edu.in
+      </a> 
+      (Visible to other course participants)
+    </p>
+    <a href="#" class="text-blue-600 hover:underline">Edit profile</a>
+  </div>
+
+  <div class="bg-white p-4 border border-gray-200 rounded-lg shadow-sm">
+    <div class="font-semibold text-lg mb-2">Miscellaneous</div>
+    <ul class="list-disc list-inside">
+      <li><a href="#" class="text-blue-600 hover:underline">Blog entries</a></li>
+      <li><a href="#" class="text-blue-600 hover:underline">Forum posts</a></li>
+      <li><a href="#" class="text-blue-600 hover:underline">Forum discussions</a></li>
+      <li><a href="#" class="text-blue-600 hover:underline">Learning plans</a></li>
+    </ul>
+  </div>
+
+  <div class="bg-white p-4 border border-gray-200 rounded-lg shadow-sm">
+    <div class="font-semibold text-lg mb-2">Privacy and policies</div>
+    <a href="#" class="text-blue-600 hover:underline">Data retention summary</a>
+  </div>
+
+  <div class="bg-white p-4 border border-gray-200 rounded-lg shadow-sm">
+    <div class="font-semibold text-lg mb-2">Reports</div>
+    <ul class="list-disc list-inside">
+      <li><a href="#" class="text-blue-600 hover:underline">Browser sessions</a></li>
+      <li><a href="#" class="text-blue-600 hover:underline">Grades overview</a></li>
+    </ul>
+  </div>
+</div>`;
 		} else if (buttonId === 'admin') {
 			tab = buttonId;
 			content = `Admin Controls`;

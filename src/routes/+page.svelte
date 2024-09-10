@@ -8,7 +8,7 @@
 			<span class="text-xl">IDOR</span>
 		</a>
 		<a
-			href="https://ddos-attack.vercel.app/"
+			href="/ddos"
 			class="block bg-gray-700 hover:bg-gray-600 text-center p-8 rounded-lg shadow-md transition duration-300"
 		>
 			<span class="text-xl">DDoS</span>
