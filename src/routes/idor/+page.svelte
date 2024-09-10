@@ -1,5 +1,13 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
+
+	type UserData = {
+		[key: string]: {
+			name: string;
+			email: string;
+			role: string;
+		};
+	};
 
 	onMount(() => {
 		const buttons = document.querySelectorAll('.browser-frame button');
@@ -9,6 +17,8 @@
 				console.log(button.classList.contains('active'));
 			});
 		});
+		tab = 'home';
+		content = `<b>Welcome to the Learning Management System (LMS) at Shiv Nadar University, Chennai !!</b><br><br> Based in a sprawling campus of 250 acres, Shiv Nadar University, Chennai is committed to academic excellence. Each program is designed to help talented students become a successful, job-ready professional or a world-class academic. The University promotes a culture of academic rigour, supported by ample resources, including one of the best-equipped libraries in Southern India, and extensive, world-class research facilities. The University strongly believes that its role is not limited to disseminating knowledge but to act as a catalyst for research, discovery and creation of new forms of expression and aims to become a world-class centre for research. Driven by a belief in the need for all-round development, students are provided ample sports facilities and rich campus life.`;
 	});
 
 	let id = '001';
@@ -16,8 +26,8 @@
 	let content = '';
 	let isAdmin = false;
 	let selectedUserId = '';
-	// Sample data for users
-	const userData = {
+
+	const userData: UserData = {
 		'001': { name: 'Alice', email: 'alice@example.com', role: 'Student' },
 		'002': { name: 'Bob', email: 'bob@example.com', role: 'Teacher' },
 		'003': { name: 'Charlie', email: 'charlie@example.com', role: 'Student' },
@@ -25,7 +35,7 @@
 		'005': { name: 'Edward', email: 'edward@example.com', role: 'Student' }
 	};
 
-	function handleButtonClick(buttonId) {
+	function handleButtonClick(buttonId: string) {
 		if (tab === buttonId) {
 			return;
 		}
@@ -35,6 +45,9 @@
 			content = userData[id]
 				? `Name: ${userData[id].name}<br>Email: ${userData[id].email}<br>Role: ${userData[id].role}`
 				: 'No user data available.';
+		} else if (buttonId === 'home') {
+			tab = buttonId;
+			content = `<b>Welcome to the Learning Management System (LMS) at Shiv Nadar University, Chennai !!</b><br><br>Based in a sprawling campus of 250 acres, Shiv Nadar University, Chennai is committed to academic excellence. Each program is designed to help talented students become a successful, job-ready professional or a world-class academic. The University promotes a culture of academic rigour, supported by ample resources, including one of the best-equipped libraries in Southern India, and extensive, world-class research facilities. The University strongly believes that its role is not limited to disseminating knowledge but to act as a catalyst for research, discovery and creation of new forms of expression and aims to become a world-class centre for research. Driven by a belief in the need for all-round development, students are provided ample sports facilities and rich campus life.`;
 		} else if (buttonId === 'admin') {
 			tab = buttonId;
 			content = `Admin Controls`;
@@ -96,15 +109,12 @@
 			isAdmin = false;
 		}
 	}
-	function close(){
-		window.open('/', '_self');
-	}
 </script>
 
 <main class="border bg-white">
 	<div class="bg-gray-200 border-b border-gray-300 p-4 flex items-center justify-between">
 		<div class="flex space-x-2">
-			<div class="w-3 h-3 rounded-full bg-red-500 cursor-pointer" on:click={close}></div>
+			<a href="/"><div class="w-3 h-3 rounded-full bg-red-500"></div></a>
 			<div class="w-3 h-3 rounded-full bg-yellow-500 cursor-pointer"></div>
 			<div class="w-3 h-3 rounded-full bg-green-500 cursor-pointer"></div>
 		</div>
@@ -221,9 +231,6 @@
 </main>
 
 <style>
-	.browser-button.active {
-		background-color: #0066ff;
-	}
 	.content {
 		border: 1px solid #ddd;
 		padding: 16px;
