@@ -51,10 +51,11 @@
 		p5.draw = () => {
 			if (droppedCount >= 25) {
 				dead = true;
-				p5.fill(255);
-				p5.textSize(48);
+				p5.fill('#000');
+				p5.textSize(64);
 				p5.textAlign(p5.CENTER, p5.CENTER);
-				p5.text('💀', p5.width / 2, p5.height / 2);
+				p5.text('💀', p5.width / 2, p5.height / 2 - 25);
+				p5.textSize(48);
 				p5.text('System Overheated! Critical Failure', p5.width / 2, p5.height / 2 + 50);
 				return;
 			}
