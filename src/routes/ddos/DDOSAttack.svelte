@@ -51,10 +51,11 @@
 		p5.draw = () => {
 			if (droppedCount >= 25) {
 				dead = true;
-				p5.text('System Overheated! Critical Failure', p5.width / 2, p5.height / 2);
-
-				p5.background(0);
 				p5.fill(255);
+				p5.textSize(48);
+				p5.textAlign(p5.CENTER, p5.CENTER);
+				p5.text('💀', p5.width / 2, p5.height / 2);
+				p5.text('System Overheated! Critical Failure', p5.width / 2, p5.height / 2 + 50);
 				return;
 			}
 
@@ -153,11 +154,11 @@
 			let dx = roundedBoxPos.x - circle.x;
 
 			let baseSpeed =
-				40 - 30 * Math.pow((circle.x - buttonPos.x) / (roundedBoxPos.x - buttonPos.x) - 0.5, 2) * 4;
+				60 - 57 * Math.pow((circle.x - buttonPos.x) / (roundedBoxPos.x - buttonPos.x) - 0.5, 2) * 4;
 
 			let speed = baseSpeed;
 
-			if (circle.x < roundedBoxPos.x - 80) {
+			if (circle.x < roundedBoxPos.x - 100) {
 				circle.x += p5.min(speed, dx);
 			} else if (circle.x < roundedBoxPos.x) {
 				if (!boxOccupied) {
